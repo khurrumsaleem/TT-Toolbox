@@ -51,7 +51,13 @@ if (isa(tt1, 'tt_matrix'))
     sz_n = sz(:,1);
     sz_m = sz(:,2);
     n1_n = tt1.n;
-    n1_m = tt1.m;    
+    n1_m = tt1.m;  
+    if (prod(n1_n) ~= prod(sz_n))
+        error('Reshape: different total numbers of rows in input and output')
+    end
+    if (prod(n1_m) ~= prod(sz_m))
+        error('Reshape: different total numbers of columns in input and output')
+    end    
     sz = prod(sz, 2); % We will split/convolve using the vector form anyway
     tt1 = tt1.tt;
 else
@@ -76,7 +82,7 @@ tt1.r(d1+1)=1;
 n1=tt1.n;
 
 if ( prod(n1) ~= prod(sz) )
- error('Reshape: incorrect sizes');
+ error('Reshape: different total sizes of input and output');
 end
 
 

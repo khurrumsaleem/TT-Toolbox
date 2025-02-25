@@ -5,7 +5,7 @@ ifeq ($(CPU),default)
       FC   = gfortran
       LDR   = gfortran -fPIC
       CC    = gcc
-      COPT = -O2 -fPIC
+      COPT = -O2 -fPIC -Wno-implicit-function-declaration
       LIB   = 
       MATLAB = matlab
       MCFLAGS = -fexceptions -fPIC -fno-omit-frame-pointer -pthread
